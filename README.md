@@ -72,9 +72,9 @@ El proyecto debe incluir:
 
 - Creación de tablas con `CREATE TABLE`.
 - Llaves primarias.
-- Al menos una llave foránea.
+- Al menos una llave foránea declarada con `FOREIGN KEY` en el script SQL.
 - Operaciones `INSERT`, `SELECT`, `UPDATE` y/o `DELETE` según aplique.
-- Al menos una consulta con relación entre tablas.
+- Al menos una consulta con `JOIN` entre tablas.
 
 ---
 

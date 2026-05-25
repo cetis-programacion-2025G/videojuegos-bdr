@@ -1,4 +1,4 @@
-# Proyecto Final BDR – Tienda de Videojuegos con MySQL
+clear# Proyecto Final BDR – Tienda de Videojuegos con MySQL
 
 ## 1. Historia del problema
 
@@ -37,18 +37,7 @@ El equipo debe conservar el flujo principal del programa y reemplazar el uso de 
 
 ---
 
-## 5. Entidades mínimas sugeridas
-
-- `videojuegos`
-- `clientes`
-- `ventas`
-- `detalle_venta`
-
-El equipo puede agregar campos adicionales, pero no debe aumentar demasiado el alcance.
-
----
-
-## 6. Funciones mínimas del sistema
+## 5. Funciones mínimas del sistema
 
 - Registrar videojuegos
 - Registrar clientes
@@ -58,7 +47,7 @@ El equipo puede agregar campos adicionales, pero no debe aumentar demasiado el a
 
 ---
 
-## 7. Consulta o reporte obligatorio
+## 6. Consulta o reporte obligatorio
 
 Reporte de ventas: mostrar cliente, fecha, videojuegos comprados y total.
 
@@ -66,7 +55,7 @@ Esta consulta debe obtener información relacionada desde más de una tabla.
 
 ---
 
-## 8. Requisitos de base de datos
+## 7. Requisitos de base de datos
 
 El proyecto debe incluir:
 
@@ -78,7 +67,7 @@ El proyecto debe incluir:
 
 ---
 
-## 9. Alcance limitado
+## 8. Alcance limitado
 
 Para que el proyecto sea posible en dos semanas, **no se pide**:
 
@@ -88,7 +77,7 @@ Para que el proyecto sea posible en dos semanas, **no se pide**:
 
 ---
 
-## 10. Reglas importantes
+## 9. Reglas importantes
 
 - No se debe cambiar el objetivo principal del sistema.
 - No se deben usar arreglos como almacenamiento final.
@@ -97,7 +86,7 @@ Para que el proyecto sea posible en dos semanas, **no se pide**:
 
 ---
 
-## 11. Entregable esperado
+## 10. Entregable esperado
 
 El equipo debe entregar:
 

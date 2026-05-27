@@ -1,14 +1,6 @@
 <?php
-
-$conexion = new PDO(
-    "mysql:host=localhost;dbname=tienda_videojuegos",
-    "root",
-    ""
-);
-
-$conexion->setAttribute(
-    PDO::ATTR_ERRMODE,
-    PDO::ERRMODE_EXCEPTION
-);
-
-echo "Conexión exitosa";
+define('DB_HOST', 'localhost');
+define('DB_USER', 'root');
+define('DB_PASSWORD', '');
+define('DB_NAME', 'tienda_videojuegos');
+?>

@@ -9,7 +9,7 @@ function conectar() {
     }
 
     $conn->set_charset("utf8mb4");
-echo "✅ Conexión exitosa a la base de datos.\n";
+
     return $conn;
 }
 ?>

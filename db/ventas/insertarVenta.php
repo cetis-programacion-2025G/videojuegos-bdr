@@ -1,24 +1,62 @@
 <?php
-function insertarVenta(&$datos, $cliente, $items) {
-    $nuevo = [
-        'id'      => count($datos['ventas']) + 1,
-        'cliente' => $cliente,
-        'fecha'   => date('Y-m-d'),
-        'items'   => $items,
-    ];
-    $datos['ventas'][] = $nuevo;
-    for ($j = 0; $j < count($items); $j++) {
-        $id_videojuego = $items[$j]['id_videojuego'];
-        $cantidad      = $items[$j]['cantidad'];
-        for ($i = 0; $i < count($datos['videojuegos']); $i++) {
-            if ($datos['videojuegos'][$i]['id'] === $id_videojuego) {
-                $datos['videojuegos'][$i]['stock'] -= $cantidad;
-                if ($datos['videojuegos'][$i]['stock'] < 0) {
-                    $datos['videojuegos'][$i]['stock'] = 0;
-                }
-                break;
-            }
-        }
+
+require_once __DIR__ . "/../../funciones/conexion.php";
+
+function insertarVenta(&$datos, $cliente_id, $items)
+{
+    $conn = conectar();
+
+
+    $sql = "INSERT INTO ventas (cliente_id, fecha)
+            VALUES (?, CURDATE())";
+
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $cliente_id);
+    $stmt->execute();
+
+    $venta_id = $conn->insert_id;
+
+    
+    foreach ($items as $item) {
+
+        $videojuego_id = $item['id_videojuego'];
+        $cantidad = $item['cantidad'];
+
+        
+        $sqlDetalle = "
+            INSERT INTO detalle_venta
+            (venta_id, videojuego_id, cantidad)
+            VALUES (?, ?, ?)
+        ";
+
+        $stmtDetalle = $conn->prepare($sqlDetalle);
+
+        $stmtDetalle->bind_param(
+            "iii",
+            $venta_id,
+            $videojuego_id,
+            $cantidad
+        );
+
+        $stmtDetalle->execute();
+
+        
+        $sqlStock = "
+            UPDATE videojuegos
+            SET stock = stock - ?
+            WHERE id = ?
+        ";
+
+        $stmtStock = $conn->prepare($sqlStock);
+
+        $stmtStock->bind_param(
+            "ii",
+            $cantidad,
+            $videojuego_id
+        );
+
+        $stmtStock->execute();
     }
-    return $nuevo['id'];
+
+    return $venta_id;
 }

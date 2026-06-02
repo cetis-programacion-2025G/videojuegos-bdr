@@ -1,33 +1,36 @@
 <?php
-function obtenerVentas(&$datos) {
-    $resultado = [];
-    for ($i = 0; $i < count($datos['ventas']); $i++) {
-        $v = $datos['ventas'][$i];
-        for ($j = 0; $j < count($v['items']); $j++) {
-            $item  = $v['items'][$j];
-            $juego = null;
-            for ($k = 0; $k < count($datos['videojuegos']); $k++) {
-                if ($datos['videojuegos'][$k]['id'] === $item['id_videojuego']) {
-                    $juego = $datos['videojuegos'][$k];
-                    break;
-                }
-            }
-            if ($juego) {
-                $titulo = $juego['titulo'];
-                $precio = $juego['precio'];
-            } else {
-                $titulo = '(desconocido)';
-                $precio = 0;
-            }
-            $resultado[] = [
-                'id'      => $v['id'],
-                'cliente' => $v['cliente'],
-                'fecha'   => $v['fecha'],
-                'titulo'  => $titulo,
-                'precio'  => $precio,
-                'cant'    => $item['cantidad'],
-            ];
-        }
+
+require_once __DIR__ . "/../../funciones/conexion.php";
+
+function obtenerVentas(&$datos)
+{
+    $conn = conectar();
+
+    $sql = "
+        SELECT
+            v.id,
+            c.nombre AS cliente,
+            v.fecha,
+            vg.titulo,
+            vg.precio,
+            dv.cantidad AS cant
+        FROM ventas v
+        INNER JOIN clientes c
+            ON v.cliente_id = c.id
+        INNER JOIN detalle_venta dv
+            ON dv.venta_id = v.id
+        INNER JOIN videojuegos vg
+            ON dv.videojuego_id = vg.id
+        ORDER BY v.id
+    ";
+
+    $resultado = $conn->query($sql);
+
+    $ventas = [];
+
+    while ($fila = $resultado->fetch_assoc()) {
+        $ventas[] = $fila;
     }
-    return $resultado;
+
+    return $ventas;
 }

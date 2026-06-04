@@ -45,3 +45,20 @@ CREATE TABLE detalle_venta (
     ON UPDATE CASCADE
     ON DELETE RESTRICT
 );
+
+INSERT INTO videojuegos (titulo, genero, precio, stock) VALUES
+('The Legend of Zelda', 'Aventura', 1299, 5),
+('FIFA 2025', 'Deportes', 999, 8),
+('Minecraft', 'Sandbox', 499, 12);
+
+INSERT INTO clientes (nombre) VALUES
+('Jose'),
+('Maria');
+
+INSERT INTO ventas (cliente_id, fecha) VALUES
+(1, CURDATE()),
+(2, CURDATE());
+
+INSERT INTO detalle_venta (venta_id, videojuego_id, cantidad) VALUES
+(1, 1, 2),
+(2, 2, 1);

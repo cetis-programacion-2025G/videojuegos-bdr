@@ -34,3 +34,9 @@ require_once 'pantallas/ventas/registrarVenta.php';
 require_once 'pantallas/ventas/menuVentas.php';
 
 require_once 'db/clientes/obtenerOCrearCliente.php';
+
+require_once "db/videojuegos/actualizarVideojuego.php";
+require_once "db/videojuegos/eliminarVideojuego.php";
+
+require_once "pantallas/videojuegos/editarVideojuego.php";
+require_once "pantallas/videojuegos/eliminarVideojuego.php";

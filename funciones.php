@@ -32,3 +32,5 @@ require_once 'pantallas/videojuegos/menuVideojuegos.php';
 require_once 'pantallas/ventas/listarVentas.php';
 require_once 'pantallas/ventas/registrarVenta.php';
 require_once 'pantallas/ventas/menuVentas.php';
+
+require_once 'db/clientes/obtenerOCrearCliente.php';

@@ -5,7 +5,7 @@ require_once 'datos.php';
 require_once 'funciones.php';
 
 $datos       = datosVideojuegos();
-$videojuegos = &$datos['videojuegos'];
+$videojuegos = &$videojuegos;
 $ventas      = &$datos['ventas'];
 $salir       = false;
 

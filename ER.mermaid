@@ -1,0 +1,30 @@
+erDiagram
+
+CLIENTES {
+    INT id PK
+    VARCHAR nombre
+} 
+
+VIDEOJUEGOS {
+    INT id PK
+    VARCHAR titulo
+    VARCHAR genero
+    DECIMAL precio
+    INT stock
+} 
+
+VENTAS {
+    INT id PK
+    INT cliente_id FK 
+    DATE fecha
+} 
+DETALLE_VENTA {
+    INT id PK
+    INT venta_if FK
+    INT videojuego_id FK
+    INT cantidad
+}
+
+CLIENTES ||--O{ VENTAS : realiza
+VENTAS ||--O{ DETALLE_VENTA : vendido
+VIDEOJUEGOS ||--O{ DETALLE_VENTA : vendido

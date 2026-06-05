@@ -24,7 +24,7 @@ function actualizarVideojuego(
     $stmt = $conn->prepare($sql);
 
     $stmt->bind_param(
-        "ssdii",
+        $datos,
         $titulo,
         $genero,
         $precio,

@@ -8,8 +8,11 @@ function eliminarVideojuego(&$datos)
 
     $id = (int) readline("ID del videojuego: ");
 
-    borrarVideojuego($datos, $id);
+    if (eliminarVideojuegoDB($id)) {
+        echo "\nVideojuego eliminado.\n";
+    } else {
+        echo "\nNo se puede eliminar porque tiene ventas registradas.\n";
+    }
 
-    echo "\nVideojuego eliminado.\n";
     esperarEnter();
 }

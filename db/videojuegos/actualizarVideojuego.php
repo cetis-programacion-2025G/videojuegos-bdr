@@ -3,7 +3,6 @@
 require_once __DIR__ . "/../../funciones/conexion.php";
 
 function actualizarVideojuego(
-    &$datos,
     $id,
     $titulo,
     $genero,
@@ -24,7 +23,7 @@ function actualizarVideojuego(
     $stmt = $conn->prepare($sql);
 
     $stmt->bind_param(
-        $datos,
+        "ssdii",
         $titulo,
         $genero,
         $precio,

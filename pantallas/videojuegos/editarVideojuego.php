@@ -22,7 +22,7 @@ function editarVideojuego(&$datos)
     $precio = (float) readline("Nuevo precio: ");
     $stock  = (int) readline("Nuevo stock: ");
 
-    actualizarVideojuego($datos, $id, $titulo, $genero, $precio, $stock);
+    actualizarVideojuego($id, $titulo, $genero, $precio, $stock);
     
     echo "\nVideojuego actualizado.\n";
     esperarEnter();
